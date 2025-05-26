@@ -1,317 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join Our Exclusive Waitlist</title>
+    <title>ویت لیست اختصاصی</title>
     <style>
         :root {
-            --primary-bg: #121212; /* Pencil black background */
-            --button-bg: #FFD700; /* Dark yellow */
-            --button-hover: #FFC000;
-            --text-light: #FFFFFF;
-            --text-dark: #121212;
-            --accent: #FF6B6B;
-            --card-bg: #1E1E1E;
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --bg: #000000;
+            --yellow: #FFD700;
+            --yellow-dark: #FFA500;
+            --text: #FFFFFF;
+            --glow: 0 0 15px rgba(255, 215, 0, 0.7);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: var(--primary-bg);
-            color: var(--text-light);
+            background: var(--bg);
+            color: var(--text);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 2rem;
-            background-image: radial-gradient(circle at 25% 25%, rgba(255, 215, 0, 0.05) 0%, transparent 50%);
+            align-items: center;
+            overflow: hidden;
+            position: relative;
         }
 
         .container {
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(90deg, #FFD700, #FFA500);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .steps-container {
-            display: grid;
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .step-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            transition: var(--transition);
-            border-left: 4px solid var(--button-bg);
-        }
-
-        .step-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        }
-
-        .step-number {
-            background: var(--button-bg);
-            color: var(--text-dark);
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-
-        .step-content h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .step-content p {
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-
-        .locked-step {
-            position: relative;
-            filter: brightness(0.7);
-        }
-
-        .locked-step::after {
-            content: 'Coming Soon';
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--accent);
-            color: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: bold;
-        }
-
-        .cta-button {
-            background: var(--button-bg);
-            color: var(--text-dark);
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: block;
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            text-align: center;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--button-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
-        }
-
-        .cta-button:active {
-            transform: translateY(0);
-        }
-
-        .progress-container {
             width: 100%;
             max-width: 500px;
-            margin: 2rem auto;
+            padding: 20px;
+            position: relative;
+            z-index: 2;
         }
 
-        .progress-text {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+        .step {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-fill {
-            height: 100%;
-            width: 33%;
-            background: linear-gradient(90deg, var(--button-bg), #FFA500);
-            border-radius: 4px;
-            transition: width 0.5s ease;
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow);
         }
 
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: var(--button-bg);
+        .step.locked {
+            opacity: 0.6;
+            filter: grayscale(50%);
+        }
+
+        .step.locked::after {
+            content: "🔒";
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 20px;
+        }
+
+        .step-number {
+            background: var(--yellow);
+            color: #000;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            background: var(--yellow);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: var(--yellow-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        /* انیمیشن‌های پس‌زمینه */
+        .floating-emoji {
+            position: absolute;
+            font-size: 24px;
             opacity: 0;
-            z-index: 1000;
-            animation: confetti-fall 3s ease-in-out;
+            z-index: 1;
+            animation: float 5s linear infinite;
         }
 
-        @keyframes confetti-fall {
+        @keyframes float {
             0% {
-                transform: translateY(-100px) rotate(0deg);
-                opacity: 1;
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
             }
             100% {
-                transform: translateY(100vh) rotate(360deg);
+                transform: translateY(-100px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .step-card {
-                flex-direction: column;
-            }
-            
-            .step-number {
-                margin-bottom: 1rem;
-            }
+        /* دلقک هوش مصنوعی 🤡 */
+        .ai-clown {
+            position: absolute;
+            bottom: -50px;
+            right: 20px;
+            font-size: 60px;
+            animation: bounce 2s infinite alternate, rotate 4s infinite linear;
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(-10deg); }
+            to { transform: rotate(10deg); }
         }
     </style>
 </head>
 <body>
+    <!-- دلقک هوش مصنوعی 🤡 -->
+    <div class="ai-clown">🤖🤡</div>
+
+    <!-- محتوای اصلی -->
     <div class="container">
-        <header>
-            <h1>Join Our Exclusive Waitlist</h1>
-            <p class="subtitle">Complete these steps to secure your spot and get early access to our platform</p>
-        </header>
-
-        <div class="steps-container">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>Follow our Forcaster account</h3>
-                    <p>Follow our official Forcaster account to stay updated with the latest news and announcements.</p>
-                </div>
-            </div>
-
-            <div class="step-card locked-step">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>Second Step (Coming Soon)</h3>
-                    <p>This step will be revealed soon. Stay tuned for updates!</p>
-                </div>
-            </div>
-
-            <div class="step-card locked-step">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>Verify with 1-cent transaction</h3>
-                    <p>Complete your registration by verifying your account with a small 1-cent transaction.</p>
-                </div>
+        <div class="step">
+            <div>
+                <span class="step-number">1</span>
+                <span class="step-title">فالو کردن فارکستر</span>
             </div>
         </div>
 
-        <div class="progress-container">
-            <div class="progress-text">
-                <span>Progress</span>
-                <span>1/3 completed</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+        <div class="step locked">
+            <div>
+                <span class="step-number">2</span>
+                <span class="step-title">مرحله بعدی (به زودی)</span>
             </div>
         </div>
 
-        <a href="#" class="cta-button" id="followButton">Follow Now</a>
+        <div class="step locked">
+            <div>
+                <span class="step-number">3</span>
+                <span class="step-title">تایید تراکنش ۱ سنتی</span>
+            </div>
+        </div>
+
+        <button class="btn" id="actionBtn">فالو کن!</button>
     </div>
 
     <script>
-        // Simple animation for the follow button
-        document.getElementById('followButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Create confetti effect
-            for (let i = 0; i < 50; i++) {
-                createConfetti();
+        // ایجاد ایموجی‌های شناور
+        function createFloatingEmojis() {
+            const emojis = ["🚀", "🌟", "💎", "🔥", "🎯", "⚡"];
+            for (let i = 0; i < 15; i++) {
+                const emoji = document.createElement("div");
+                emoji.className = "floating-emoji";
+                emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                emoji.style.left = Math.random() * 100 + "vw";
+                emoji.style.animationDuration = 3 + Math.random() * 7 + "s";
+                emoji.style.animationDelay = Math.random() * 5 + "s";
+                document.body.appendChild(emoji);
             }
-            
-            // Change button text temporarily
-            this.textContent = '✓ Following!';
-            this.style.backgroundColor = '#4CAF50';
-            
-            setTimeout(() => {
-                this.textContent = 'Follow Now';
-                this.style.backgroundColor = '';
-            }, 2000);
-        });
-        
-        function createConfetti() {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            
-            // Random position
-            confetti.style.left = Math.random() * 100 + 'vw';
-            
-            // Random size
-            const size = Math.random() * 10 + 5;
-            confetti.style.width = size + 'px';
-            confetti.style.height = size + 'px';
-            
-            // Random color variation
-            const hue = 40 + Math.random() * 20; // Yellow-ish range
-            confetti.style.backgroundColor = `hsl(${hue}, 100%, 50%)`;
-            
-            // Random animation duration
-            confetti.style.animationDuration = 2 + Math.random() * 3 + 's';
-            
-            document.body.appendChild(confetti);
-            
-            // Remove confetti after animation
-            setTimeout(() => {
-                confetti.remove();
-            }, 3000);
         }
+
+        // کلیک روی دکمه
+        document.getElementById("actionBtn").addEventListener("click", function() {
+            this.textContent = "✓ انجام شد!";
+            this.style.background = "#4CAF50";
+            setTimeout(() => {
+                this.textContent = "فالو کن!";
+                this.style.background = "";
+            }, 2000);
+
+            // انفجار ایموجی‌ها
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement("div");
+                confetti.className = "floating-emoji";
+                confetti.textContent = "🎉";
+                confetti.style.left = Math.random() * 100 + "vw";
+                confetti.style.animationDuration = "1s";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 1000);
+            }
+        });
+
+        // اجرای انیمیشن‌ها
+        createFloatingEmojis();
     </script>
 </body>
 </html>
